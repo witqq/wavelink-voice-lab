@@ -1,0 +1,106 @@
+<!doctype html>
+<html lang="ru">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#0b0d12">
+  <title>Voice Lab</title>
+  <link rel="stylesheet" href="/styles.css">
+</head>
+<body>
+  <main class="shell">
+    <header>
+      <div>
+        <p class="eyebrow">ELGATO WAVE LINK · ПЕРЕНОСИМЫЕ ПРЕСЕТЫ</p>
+        <h1>Voice Lab</h1>
+      </div>
+      <div class="header-status">
+        <div id="waveStatus" class="status waiting"><span></span>Подключение к Wave Link…</div>
+        <div id="platformStatus" class="status neutral"><span></span>Определяю платформу…</div>
+      </div>
+    </header>
+
+    <section class="panel">
+      <div class="section-head">
+        <div>
+          <h2>1. Пресеты</h2>
+          <p>Репозиторий поставляется пустым. Импортируй файл пресета или бандл, чтобы перенести настройки на эту машину.</p>
+        </div>
+        <div class="preset-tools">
+          <label class="button primary import-button">
+            Импорт
+            <input id="importPresetInput" type="file" accept=".json,application/json" multiple>
+          </label>
+          <button id="exportAllButton" class="button ghost">Экспорт всех</button>
+          <button id="savePresetButton" class="button ghost">Сохранить текущий</button>
+        </div>
+      </div>
+      <div id="presetBusy" class="mini-status"></div>
+      <div id="presetGrid" class="preset-grid"></div>
+    </section>
+
+    <section class="panel">
+      <div class="section-head">
+        <div>
+          <h2>2. Плагины</h2>
+          <p>Что нужно выбранному пресету и чего не хватает на этой машине.</p>
+        </div>
+        <button id="refreshPluginsButton" class="button ghost">Пересканировать</button>
+      </div>
+      <div id="pluginSummary" class="mini-status">Выбери пресет, чтобы увидеть требования.</div>
+      <div id="pluginList" class="plugin-list"></div>
+      <details id="inventoryDetails" class="inventory">
+        <summary>Установленные плагины <span id="inventoryCount"></span></summary>
+        <div id="inventoryList" class="inventory-list"></div>
+        <p id="inventorySources" class="inventory-sources"></p>
+      </details>
+    </section>
+
+    <section class="panel setup">
+      <div class="setup-copy">
+        <h2>3. Источник записи</h2>
+        <p>Выбери <strong>Wave Link MicrophoneFX</strong>, чтобы в запись попадал выбранный пресет.</p>
+      </div>
+      <div class="device-row">
+        <button id="connectButton" class="button primary">Подключить микрофон</button>
+        <select id="deviceSelect" aria-label="Микрофон" disabled><option>Сначала подключи микрофон</option></select>
+      </div>
+      <div class="meter" aria-label="Уровень микрофона"><i id="meterFill"></i><b id="meterPeak">— dB</b></div>
+    </section>
+
+    <section class="record-layout">
+      <section class="panel script-panel">
+        <div class="section-head">
+          <div><h2>4. Тестовая фраза</h2><p>Запиши один чистый дубль — по нему сравниваются пресеты.</p></div>
+          <span id="phraseCounter" class="counter"></span>
+        </div>
+        <article class="phrase-card">
+          <span id="phraseTag" class="tag"></span>
+          <p id="phraseText" class="phrase"></p>
+          <p id="phraseNote" class="note"></p>
+        </article>
+      </section>
+
+      <aside class="panel recorder">
+        <h2>5. Запись</h2>
+        <div id="timer" class="timer">00:00.0</div>
+        <button id="recordButton" class="record-button" disabled><span></span><b>Начать запись</b></button>
+        <div class="take-row">
+          <label for="takeNumber">Дубль</label>
+          <input id="takeNumber" type="number" min="1" max="99" value="1">
+        </div>
+        <p id="recordStatus" class="record-status">Подключи микрофон</p>
+      </aside>
+    </section>
+
+    <section class="panel">
+      <div class="section-head">
+        <div><h2>Записи</h2><p>Файлы лежат локально и не попадают в репозиторий.</p></div>
+        <button id="refreshButton" class="button ghost">Обновить</button>
+      </div>
+      <div id="recordings" class="recordings"><p class="empty">Записей пока нет.</p></div>
+    </section>
+  </main>
+  <script type="module" src="/app.js"></script>
+</body>
+</html>

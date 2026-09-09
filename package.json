@@ -1,0 +1,30 @@
+{
+  "name": "wavelink-voice-lab",
+  "version": "1.0.0",
+  "type": "module",
+  "description": "Portable Elgato Wave Link microphone presets with cross-platform plugin analysis",
+  "license": "MIT",
+  "keywords": [
+    "elgato",
+    "wave-link",
+    "vst3",
+    "audio-units",
+    "microphone",
+    "presets"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/witqq/wavelink-voice-lab.git"
+  },
+  "engines": {
+    "node": ">=20"
+  },
+  "scripts": {
+    "start": "node server.mjs",
+    "test": "node --test"
+  },
+  "dependencies": {
+    "@darrellvs/node-wave-link-sdk": "^2.0.4",
+    "ws": "^8.18.3"
+  }
+}
